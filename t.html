@@ -1,0 +1,19 @@
+<!-- 기기 진단용 가벼운 페이지: 꾸밈·최신 문법 없이 글자만 보여 준다 -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>서재 진단</title>
+<body style="background:#fff;color:#000;font-size:20px;padding:20px">
+<p>1. 이 글이 보이면 인터넷과 주소는 정상입니다.</p>
+<p id="js">2. (이 줄이 바뀌지 않으면 자바스크립트가 꺼져 있습니다)</p>
+<p id="ua" style="font-size:14px;word-break:break-all"></p>
+<p id="t2" style="font-size:14px"></p>
+<p><a href="./">서재로 가기</a></p>
+<script>
+document.getElementById("js").innerHTML = "2. 자바스크립트 정상";
+document.getElementById("ua").innerHTML = "브라우저: " + navigator.userAgent;
+var ok = [];
+try { eval("var o={a:1}; o?.a"); ok.push("?. 됨"); } catch (e) { ok.push("?. 안 됨"); }
+try { eval("var z=null; z ?? 1"); ok.push("?? 됨"); } catch (e) { ok.push("?? 안 됨"); }
+try { eval("let q=1; const f=()=>`${q}`; class C{}"); ok.push("최신 기본 문법 됨"); } catch (e) { ok.push("최신 기본 문법 안 됨"); }
+document.getElementById("t2").innerHTML = "3. " + ok.join(" / ");
+</script>
+</body>
